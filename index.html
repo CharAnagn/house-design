@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:500,600,700,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="wrapper">
+    <!--Overlay-->
+    
+<div class="overlay first"></div>
+            <div class="overlay second"></div>
+            <div class="overlay third"></div>
+
+   
+        
+            
+        
+        
+   
+
+    <!--Navbar-->
+    <nav class="navbar">
+        <div class="menu">
+          <ion-icon name="ios-menu"></ion-icon>
+        </div>
+        <div class="lang">eng</div>
+        <div class="search">
+          <ion-icon name="ios-search"></ion-icon>
+        </div>
+      </nav>
+
+      <!-- SOCIAL MEDIA
+    =============================== -->
+    <div class="media">
+        <ul>
+          <li>facebook</li>
+          <li>instagram</li>
+          <li>twitter</li>
+        </ul>
+      </div>
+
+       <!-- TEXT
+    =============================== -->
+    <div class="text">
+        <h1>
+          <span class="hidetext">Design</span>
+        </h1>
+        <h2 class="hidetext">minimal</h2>
+        <h3>
+          <span class="hidetext">Modern <br> architecture</span>
+        </h3>
+        <p>
+          <span class="hidetext">
+            A clean, streamlined furniture and architecture style that dates back to the ‘30s, modern decor is rooted in the minimal, true use of materials and absence of decoration. It's characterized by a neutral color palette, polished surfaces, strong geometric shapes and asymmetry.
+          </span>
+        </p>
+      </div>
+
+      <!-- SPONSOR
+    =============================== -->
+        <div class="images">
+            <img class="firstImage" src="./images/home1.png">
+            <img class="secondImage" src="/images/home2.png">
+        </div>
+    </div>
+
+    <!--GSAP-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js" integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <script>
+        
+        var tl = gsap.timeline();
+
+         //Overlay
+         tl.
+       to(".first", {y:"-100%", duration:1 , delay: 1})
+        .to(".second", {y:"-100%", duration:1}, "<0.1")
+        .to(".third", {y:"-100%", duration:1}, "<0.3")
+
+        //Navbar
+        tl.
+        from(".navbar div", {opacity: 0, y:20, delay: 0.5})
+        .from(".media ul li", {opacity:0, x:-20})
+        .from(".text h1 .hidetext", {opacity:0, x:"-50%"})
+        .from(".text h3 .hidetext",{opacity:0,x:"50%"})
+        .from(".text h2",{opacity:0, x:"-50%"} )
+        .from(".text p .hidetext", {opacity:0, y:"100%"})
+       .from(".images img",{opacity:0,y:"-100%"}, "<")
+
+       const image = document.querySelector(".images")
+
+       const imageAnimation = gsap.timeline({paused:true})
+       .to(".firstImage", { xPercent:-100,duration:1.2,ease:"back"})
+       .to(".secondImage",{opacity:1,duration:1}, "<")
+
+       image.addEventListener("mouseenter", ()=> imageAnimation.play())
+       image.addEventListener("mouseleave", ()=> imageAnimation.reverse())
+
+
+       
+
+    </script>
+</body>
+</html>
